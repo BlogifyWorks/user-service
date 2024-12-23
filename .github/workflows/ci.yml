@@ -31,9 +31,9 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Build with Maven
-      working-directory: user-service/user-service
       run: mvn clean install
+      working-directory: user-service/user-service
 
     - name: Run tests
-      working-directory: user-service/user-service
       run: mvn test
+      working-directory: user-service/user-service
