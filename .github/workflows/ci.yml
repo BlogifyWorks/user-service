@@ -16,8 +16,11 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
-    - name: Debug directory structure
-      run: ls -R
+    - name: Debug repository structure
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "List of files:"
+        ls -R
 
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -34,11 +37,9 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Build with Maven
-      run: |
-        cd user-service/user-service
-        mvn clean install
+      run: mvn clean install
+      working-directory: <INSERT_CORRECT_DIRECTORY>
 
     - name: Run tests
-      run: |
-        cd user-service/user-service
-        mvn test
+      run: mvn test
+      working-directory: <INSERT_CORRECT_DIRECTORY>
